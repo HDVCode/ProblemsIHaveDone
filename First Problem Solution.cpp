@@ -41,67 +41,68 @@ int main() {
     int amountOfRestaurantes = 0;
     int amountOfLinesToProccess = 0;
 
-    while (cin >> amountOfRestaurantes >> amountOfLinesToProccess) {
+    vector<vector<int>> nodes(amountOfRestaurantes, vector<int>(0));
+    vector<vector<int>> nodesReversed(amountOfRestaurantes, vector<int>(0));
 
-        vector<vector<int>> nodes(amountOfRestaurantes, vector<int>(0));
-        vector<vector<int>> nodesReversed(amountOfRestaurantes, vector<int>(0));
+    int nodeToAdd = 0;
+    int nodeToAddTo = 0;
 
-        int nodeToAdd = 0;
-        int nodeToAddTo = 0;
+    cin >> amountOfRestaurantes >> amountOfLinesToProccess
 
-        for (int i = 0; i < amountOfLinesToProccess; i++) {
+    for (int i = 0; i < amountOfLinesToProccess; i++) {
 
-            cin >> nodeToAddTo >> nodeToAdd;
+        cin >> nodeToAddTo >> nodeToAdd;
 
-            nodes[nodeToAddTo - 1].push_back(nodeToAdd - 1);
-            nodesReversed[nodeToAdd - 1].push_back(nodeToAddTo - 1);
-
-        }
-
-        int cases = 0;
-        cin >> cases;
-
-        for (int i = 0; i < cases; i++) {
-
-            int startingNode = 0;
-            int endingNode = 0;
-
-            vector<bool> reachableValuesFromStart(amountOfRestaurantes, false);
-            vector<bool> reachableValuesFromEnd(amountOfRestaurantes, false);
-
-            int amountOfRestauratesWhichNeedToBeOpen = 0;
-
-            cin >> startingNode >> endingNode;
-            startingNode--;
-            endingNode--;
-
-            isItPosibleToReachFrom(nodes, startingNode, reachableValuesFromStart);
-            isItPosibleToReachFrom(nodesReversed, endingNode, reachableValuesFromEnd);
-
-            if (!reachableValuesFromStart[endingNode]) {
-
-                cout << "IMPOSIBLE\n";
-                continue;
-
-            }
-
-            for (int j = 0; j < amountOfRestaurantes; j++) {
-
-                if (reachableValuesFromStart[j] && reachableValuesFromEnd[j]) {
-
-                    amountOfRestauratesWhichNeedToBeOpen++;
-
-                }
-
-            }
-
-            cout << amountOfRestauratesWhichNeedToBeOpen - 2 << "\n";
-
-        }
-
-        cout << "---\n";
+        nodes[nodeToAddTo - 1].push_back(nodeToAdd - 1);
+        nodesReversed[nodeToAdd - 1].push_back(nodeToAddTo - 1);
 
     }
 
-    return 0;
+    int cases = 0;
+    cin >> cases;
+
+    for (int i = 0; i < cases; i++) {
+
+        int startingNode = 0;
+        int endingNode = 0;
+
+        vector<bool> reachableValuesFromStart(amountOfRestaurantes, false);
+        vector<bool> reachableValuesFromEnd(amountOfRestaurantes, false);
+
+        int amountOfRestauratesWhichNeedToBeOpen = 0;
+
+        cin >> startingNode >> endingNode;
+        startingNode--;
+        endingNode--;
+
+        isItPosibleToReachFrom(nodes, startingNode, reachableValuesFromStart);
+        isItPosibleToReachFrom(nodesReversed, endingNode, reachableValuesFromEnd);
+
+        if (!reachableValuesFromStart[endingNode]) {
+
+            cout << "IMPOSIBLE\n";
+            continue;
+
+        }
+
+        for (int j = 0; j < amountOfRestaurantes; j++) {
+
+            if (reachableValuesFromStart[j] && reachableValuesFromEnd[j]) {
+
+                amountOfRestauratesWhichNeedToBeOpen++;
+
+            }
+
+        }
+
+        cout << amountOfRestauratesWhichNeedToBeOpen << "\n";
+
+    }
+
+    cout << "---\n";
+
+}
+
+return 0;
+
 }
