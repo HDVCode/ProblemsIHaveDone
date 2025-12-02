@@ -64,8 +64,8 @@ int main() {
 
         floodFill(buffer, make_pair(0, 0));
 
-        if (areThereZeros(buffer)) cout << "SI" << "\n";
-        else cout << "NO" << "\n";
+        if (areThereZeros(buffer)) cout << "Yes" << "\n";
+        else cout << "No" << "\n";
 
     }
 
