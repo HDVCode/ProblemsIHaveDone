@@ -65,36 +65,28 @@ vector<int> solveCases() {
 
     vector<int> answer;
 
-    while (true) {
+    priority_queue<registers> registersInTheSuper;
+    queue<int> remainingCustomers;
 
-        priority_queue<registers> registersInTheSuper;
-        queue<int> remainingCustomers;
+    int amountOfRegisters;
+    int amountOfCustomers;
 
-        int amountOfRegisters;
-        int amountOfCustomers;
+    cin >> amountOfRegisters;
+    cin >> amountOfCustomers;
 
-        cin >> amountOfRegisters;
-        cin >> amountOfCustomers;
+    getInfo(registersInTheSuper, remainingCustomers, amountOfRegisters, amountOfCustomers);
 
-        if (amountOfCustomers == 0 && amountOfRegisters == 0) {
-            return answer;
-        }
+    int queueSize = remainingCustomers.size();
 
-        getInfo(registersInTheSuper, remainingCustomers, amountOfRegisters, amountOfCustomers);
-
-        int queueSize = remainingCustomers.size();
-
-        for (int i = 0; i < queueSize; i++) {
-
-            wait(registersInTheSuper, remainingCustomers);
-
-        }
-
-        answer.push_back(registersInTheSuper.top().idNumber + 1);
-
+    for (int i = 0; i < queueSize; i++) {
+        wait(registersInTheSuper, remainingCustomers);
     }
 
+    answer.push_back(registersInTheSuper.top().idNumber + 1);
+
+    return answer;
 }
+
 
 int main() {
 
