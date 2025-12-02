@@ -1,0 +1,39 @@
+Second Problem Description
+
+You are given a supermarket scenario with:
+- N cash registers (numbered 1 to N).
+- A queue of C customers, each with a known processing time.
+
+There is a **single queue** serving all registers. The first customer in the queue goes to the first available register (lowest number if multiple registers are free). Each register processes customers independently.  
+
+A new customer (Ismael) arrives at the end of the queue. Determine **which register he will be assigned to** based on the current queue and processing times.
+
+Input Format:
+- Each test case consists of two lines:
+  - Line 1: Two integers N and C, the number of registers and customers in the queue.
+  - Line 2: C integers representing the service time of each customer in the queue, in order.
+- The input ends with a line `0 0`, which should not be processed.
+
+Output Format:
+- For each test case, output a single integer: the register number where the new customer will be served.
+
+Constraints:
+- 1 ≤ N ≤ 1000
+- 0 ≤ C ≤ 10^5
+- Service times are positive integers.
+
+Example:
+
+Input:
+2 2
+10 5
+2 2
+5 10
+3 2
+5 10
+0 0
+
+Output:
+2
+1
+3

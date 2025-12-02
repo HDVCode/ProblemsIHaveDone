@@ -1,0 +1,48 @@
+First Problem Description
+
+You are given a directed graph G = (V, E), where:
+- V is the set of nodes representing locations.
+- E is the set of paths between nodes.
+
+For multiple queries, each defined by a pair of distinct vertices (S, D):
+- Determine the set of vertices that lie on at least one path from S to D, excluding S and D themselves.
+- If no path exists from S to D, report that it is impossible.
+
+Input Format:
+- The first line contains two integers NV and NA, the number of vertices and edges, respectively.
+- The next NA lines each contain two integers u and v (1 ≤ u, v ≤ NV), representing a directed edge from u to v.
+- After the edges, a line contains a single integer Q, the number of queries.
+- Each of the next Q lines contains two integers S and D, the start and end vertices for a query.
+
+Output Format:
+- For each query, output a single integer: the number of vertices (including S and D) that lie on any path from S to D.
+- If no path exists, output "IMPOSIBLE".
+- After each set of queries for a graph, output a line containing "---" to separate test cases.
+
+Constraints:
+- 2 ≤ NV ≤ 10,000
+- 0 ≤ NA ≤ 100,000
+- The total number of queries times the number of edges does not exceed 10^7.
+
+Example:
+
+Input:
+
+5 6
+1 2
+2 3
+3 2
+3 4
+4 3
+2 5
+3
+1 4
+1 5
+5 1
+
+Output:
+2
+3
+IMPOSIBLE
+---
+

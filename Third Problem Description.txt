@@ -1,0 +1,46 @@
+Third Problem Description
+
+You are given a set of images representing groups of non-overlapping objects. Each image is represented as a grid of pixels:
+- '.' represents a white pixel (background or white part of an object).
+- 'X' represents a black pixel (object silhouette).
+
+Each object has a black outline. Some objects may contain white pixels inside their black outline (these are "white objects"). All objects are fully inside the image, never touching the edges.  
+
+The task is, for each image, to determine whether **there exists at least one object that contains white pixels inside its black outline**.
+
+Input Format:
+- Each test case begins with two integers W and H, the width and height of the image (1 ≤ W, H ≤ 50).  
+- Then H lines follow, each with W characters ('.' or 'X'), representing the pixels of the image.  
+- Input may contain multiple images.
+
+Output Format:
+- For each image, output `Yes` if there is at least one object containing white pixels inside its black outline, or `No` if all objects are completely black.
+
+Constraints:
+- The background is always white.  
+- Objects do not overlap.  
+- Objects do not touch the image border.
+
+Example:
+
+Input:
+22 7
+......................
+.XXX..................
+.XXXXXXXX.............
+...XXXXXXX........XX..
+....XXXXX....XXXXXX...
+....X...X..XXX.....XX.
+......................
+29 7
+.............................
+.XXX..............XXX....X...
+.XXXXXXXX....XXXXXXXX...XXX..
+...XXXXXXX..X....XX....X...X.
+....XXXXX....XXXXX......XXX..
+....X...X....X...X.......X...
+.............................
+
+Output:
+NO
+SI
