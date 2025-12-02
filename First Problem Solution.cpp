@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <queue>
 
@@ -8,101 +8,76 @@ void isItPosibleToReachFrom(vector<vector<int>>& nodes, int start, vector<bool>&
 
     queue<int> nodesLeftToCheck;
     nodesLeftToCheck.push(start);
-
     reachableValues[start] = true;
-
-    int tempNode = 0;
-    int tempTransversalNode = 0;
 
     while (!nodesLeftToCheck.empty()) {
 
-        tempNode = nodesLeftToCheck.front();
+        int tempNode = nodesLeftToCheck.front();
         nodesLeftToCheck.pop();
 
-        for (int i = 0; i < nodes[tempNode].size(); i++) {
-
-            tempTransversalNode = nodes[tempNode][i];
-
-            if (!reachableValues[tempTransversalNode]) {
-
-                reachableValues[tempTransversalNode] = true;
-                nodesLeftToCheck.push(tempTransversalNode);
-
+        for (int nxt : nodes[tempNode]) {
+            if (!reachableValues[nxt]) {
+                reachableValues[nxt] = true;
+                nodesLeftToCheck.push(nxt);
             }
-
         }
-
     }
-
 }
 
 int main() {
 
-    int amountOfRestaurantes = 0;
-    int amountOfLinesToProccess = 0;
+    while (true) { // process multiple test cases
 
-    vector<vector<int>> nodes(amountOfRestaurantes, vector<int>(0));
-    vector<vector<int>> nodesReversed(amountOfRestaurantes, vector<int>(0));
+        int amountOfRestaurantes = 0;
+        int amountOfLinesToProccess = 0;
 
-    int nodeToAdd = 0;
-    int nodeToAddTo = 0;
+        cin >> amountOfRestaurantes >> amountOfLinesToProccess;
+        if (!cin) return 0; // end of input
 
-    cin >> amountOfRestaurantes >> amountOfLinesToProccess
+        vector<vector<int>> nodes(amountOfRestaurantes);
+        vector<vector<int>> nodesReversed(amountOfRestaurantes);
 
-    for (int i = 0; i < amountOfLinesToProccess; i++) {
-
-        cin >> nodeToAddTo >> nodeToAdd;
-
-        nodes[nodeToAddTo - 1].push_back(nodeToAdd - 1);
-        nodesReversed[nodeToAdd - 1].push_back(nodeToAddTo - 1);
-
-    }
-
-    int cases = 0;
-    cin >> cases;
-
-    for (int i = 0; i < cases; i++) {
-
-        int startingNode = 0;
-        int endingNode = 0;
-
-        vector<bool> reachableValuesFromStart(amountOfRestaurantes, false);
-        vector<bool> reachableValuesFromEnd(amountOfRestaurantes, false);
-
-        int amountOfRestauratesWhichNeedToBeOpen = 0;
-
-        cin >> startingNode >> endingNode;
-        startingNode--;
-        endingNode--;
-
-        isItPosibleToReachFrom(nodes, startingNode, reachableValuesFromStart);
-        isItPosibleToReachFrom(nodesReversed, endingNode, reachableValuesFromEnd);
-
-        if (!reachableValuesFromStart[endingNode]) {
-
-            cout << "IMPOSIBLE\n";
-            continue;
-
+        for (int i = 0; i < amountOfLinesToProccess; i++) {
+            int a, b;
+            cin >> a >> b;
+            nodes[a-1].push_back(b-1);
+            nodesReversed[b-1].push_back(a-1);
         }
 
-        for (int j = 0; j < amountOfRestaurantes; j++) {
+        int cases = 0;
+        cin >> cases;
 
-            if (reachableValuesFromStart[j] && reachableValuesFromEnd[j]) {
+        for (int i = 0; i < cases; i++) {
 
-                amountOfRestauratesWhichNeedToBeOpen++;
+            int startingNode, endingNode;
+            cin >> startingNode >> endingNode;
 
+            startingNode--;
+            endingNode--;
+
+            vector<bool> reachableFromStart(amountOfRestaurantes, false);
+            vector<bool> reachableFromEnd(amountOfRestaurantes, false);
+
+            isItPosibleToReachFrom(nodes, startingNode, reachableFromStart);
+            isItPosibleToReachFrom(nodesReversed, endingNode, reachableFromEnd);
+
+            if (!reachableFromStart[endingNode]) {
+                cout << "IMPOSIBLE\n";
+                continue;
             }
 
+            int result = 0;
+
+            for (int j = 0; j < amountOfRestaurantes; j++) {
+                if (reachableFromStart[j] && reachableFromEnd[j])
+                    result++;
+            }
+
+            cout << result << "\n";
         }
 
-        cout << amountOfRestauratesWhichNeedToBeOpen << "\n";
-
+        cout << "---\n";
     }
 
-    cout << "---\n";
-
-}
-
-return 0;
-
+    return 0;
 }
