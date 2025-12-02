@@ -26,13 +26,13 @@ void isItPosibleToReachFrom(vector<vector<int>>& nodes, int start, vector<bool>&
 
 int main() {
 
-    while (true) { // process multiple test cases
+    while (true) { 
 
         int amountOfRestaurantes = 0;
         int amountOfLinesToProccess = 0;
 
         cin >> amountOfRestaurantes >> amountOfLinesToProccess;
-        if (!cin) return 0; // end of input
+        if (!cin) return 0; 
 
         vector<vector<int>> nodes(amountOfRestaurantes);
         vector<vector<int>> nodesReversed(amountOfRestaurantes);
