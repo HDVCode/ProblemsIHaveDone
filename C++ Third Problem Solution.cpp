@@ -48,26 +48,25 @@ int main() {
 
     string limbo;
 
-    while (cin >> x >> y) {
+    cin >> x >> y;
 
-        vector<vector<int>> buffer(y, vector<int>(x));
+    vector<vector<int>> buffer(y, vector<int>(x));
 
-        for (int i = 0; i < y; i++) {
-            cin >> limbo;
-            for (int j = 0; j < x; j++) {
+    for (int i = 0; i < y; i++) {
+        
+        cin >> limbo;
+        
+        for (int j = 0; j < x; j++) {
 
-                if (limbo[j] == '.') buffer[i][j] = 0;
-                if (limbo[j] == 'X') buffer[i][j] = 1;
-            }
-
+            if (limbo[j] == '.') buffer[i][j] = 0;
+            if (limbo[j] == 'X') buffer[i][j] = 1;
         }
-
-        floodFill(buffer, make_pair(0, 0));
-
-        if (areThereZeros(buffer)) cout << "Yes" << "\n";
-        else cout << "No" << "\n";
 
     }
 
+    floodFill(buffer, make_pair(0, 0));
+
+    if (areThereZeros(buffer)) cout << "Yes" << "\n";
+    else cout << "No" << "\n";
 
 }
