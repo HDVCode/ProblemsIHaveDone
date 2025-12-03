@@ -6,7 +6,7 @@ So btw for the c++ code you can you copy & paste like this
 1
 1 3
 
-but for the pythin you need to do likr this
+but for the pythin you need to do like this
 
 3
 2
