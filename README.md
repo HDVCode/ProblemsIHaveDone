@@ -1,6 +1,6 @@
 So btw for the c++ code you can you copy & paste like this
 
-3 2
+3 2 \n
 1 2
 2 3
 1
