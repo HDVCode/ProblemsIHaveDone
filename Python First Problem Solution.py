@@ -22,74 +22,65 @@ def isItPosibleToReachFrom(nodes, start, reachableValues):
                 nodesLeftToCheck.append(tempTransversalNode)
 
 
-while True:
+line = sys.stdin.readline()
 
-    line = sys.stdin.readline()
+parts = line.strip().split()
 
-    if line == "":
+amountOfRestaurantes = int(parts[0])
+amountOfLinesToProccess = int(parts[1])
 
-        break
+nodes = []
 
-    parts = line.strip().split()
+for i in range(amountOfRestaurantes):
 
-    if len(parts) == 0:
-        continue
+    nodes.append([])
 
-    amountOfRestaurantes = int(parts[0])
-    amountOfLinesToProccess = int(parts[1])
+nodesReversed = []
 
-    nodes = []
+for i in range(amountOfRestaurantes):
 
-    for i in range(amountOfRestaurantes):
+    nodesReversed.append([])
 
-        nodes.append([])
+for i in range(amountOfLinesToProccess):
 
-    nodesReversed = []
+    inputLine = sys.stdin.readline().split()
+    nodeToAddTo = int(inputLine[0])
+    nodeToAdd = int(inputLine[1])
 
-    for i in range(amountOfRestaurantes):
+    nodes[nodeToAddTo - 1].append(nodeToAdd - 1)
+    nodesReversed[nodeToAdd - 1].append(nodeToAddTo - 1)
 
-        nodesReversed.append([])
+casesLine = sys.stdin.readline()
+cases = int(casesLine)
 
-    for i in range(amountOfLinesToProccess):
+for i in range(cases):
 
-        inputLine = sys.stdin.readline().split()
-        nodeToAddTo = int(inputLine[0])
-        nodeToAdd = int(inputLine[1])
+    inputLine = sys.stdin.readline().split()
+    startingNode = int(inputLine[0]) - 1
+    endingNode = int(inputLine[1]) - 1
 
-        nodes[nodeToAddTo - 1].append(nodeToAdd - 1)
-        nodesReversed[nodeToAdd - 1].append(nodeToAddTo - 1)
+    reachableValuesFromStart = [False] * amountOfRestaurantes
+    reachableValuesFromEnd = [False] * amountOfRestaurantes
 
-    casesLine = sys.stdin.readline()
-    cases = int(casesLine)
+    isItPosibleToReachFrom(nodes, startingNode, reachableValuesFromStart)
+    isItPosibleToReachFrom(nodesReversed, endingNode, reachableValuesFromEnd)
 
-    for i in range(cases):
+    if reachableValuesFromStart[endingNode] == False:
 
-        inputLine = sys.stdin.readline().split()
-        startingNode = int(inputLine[0]) - 1
-        endingNode = int(inputLine[1]) - 1
+        print("IMPOSIBLE")
 
-        reachableValuesFromStart = [False] * amountOfRestaurantes
-        reachableValuesFromEnd = [False] * amountOfRestaurantes
+    else:
 
-        isItPosibleToReachFrom(nodes, startingNode, reachableValuesFromStart)
-        isItPosibleToReachFrom(nodesReversed, endingNode, reachableValuesFromEnd)
+        amountOfRestauratesWhichNeedToBeOpen = 0
 
-        if reachableValuesFromStart[endingNode] == False:
+        for j in range(amountOfRestaurantes):
 
-            print("IMPOSIBLE")
+            if reachableValuesFromStart[j] == True:
 
-        else:
+                if reachableValuesFromEnd[j] == True:
 
-            amountOfRestauratesWhichNeedToBeOpen = 0
+                    amountOfRestauratesWhichNeedToBeOpen = amountOfRestauratesWhichNeedToBeOpen + 1
 
-            for j in range(amountOfRestaurantes):
+        print(amountOfRestauratesWhichNeedToBeOpen)
 
-                if reachableValuesFromStart[j] == True:
-
-                    if reachableValuesFromEnd[j] == True:
-
-                        amountOfRestauratesWhichNeedToBeOpen = amountOfRestauratesWhichNeedToBeOpen + 1
-
-            print(amountOfRestauratesWhichNeedToBeOpen)
-
-    print("---")
+print("---")
