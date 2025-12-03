@@ -36,10 +36,10 @@ int main() {
     vector<vector<int>> nodesReversed(amountOfRestaurantes);
 
     for (int i = 0; i < amountOfLinesToProccess; i++) {
-        int a, b;
-        cin >> a >> b;
-        nodes[a-1].push_back(b-1);
-        nodesReversed[b-1].push_back(a-1);
+        int nodeToAddTo, nodeToAdd;
+        cin >>nodeToAddToa >> nodeToAdd;
+        nodes[nodeToAddTo - 1].push_back(nodeToAdd - 1);
+        nodesReversed[nodeToAdd - 1].push_back(nodeToAddTo - 1);
     }
 
     int cases = 0;
