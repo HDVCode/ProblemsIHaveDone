@@ -48,7 +48,7 @@ def getInfo(cajasDelSuper, remainingCustomers, cantidadDeCajas, amountOfCustomer
 
     while i < amountOfCustomers:
 
-        limbo = int(sys.stdin.readline())
+        limbo = int(sys.stdin.readline()) # So it reads lines so you cant use spaces to separte only new lines
         remainingCustomers.append(limbo)
 
         i = i + 1
@@ -105,3 +105,4 @@ def main():
 
 
 main()
+
