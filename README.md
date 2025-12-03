@@ -1,21 +1,21 @@
-So btw for the c++ code you can you copy & paste like this
+***So btw for the c++ code you can you copy & paste like this*** <br> <br>
 
-3 2 \n
-1 2
-2 3
-1
-1 3
+3 2 <br>
+1 2 <br>
+2 3 <br>
+1 <br>
+1 3 <br> <br>
 
-but for the pythin you need to do like this
+***But for the python you need to do like this*** <br> <br>
 
-3
-2
-1
-2
-2
-3
-1
-1
-3
+3 <br>
+2 <br>
+1 <br>
+2 <br>
+2 <br>
+3 <br>
+1 <br>
+1 <br>
+3 <br> <br>
 
-but that might be becuse of my IDE not sure
+***But that might be becuse of my IDE not sure***
