@@ -11,7 +11,7 @@ class registers:
 
         if self.amountOfTimeRemaining == other.amountOfTimeRemaining:
 
-            if self.idNumber > other.idNumber:
+            if self.idNumber < other.idNumber:
 
                 return True
 
@@ -19,7 +19,7 @@ class registers:
 
                 return False
 
-        if self.amountOfTimeRemaining > other.amountOfTimeRemaining:
+        if self.amountOfTimeRemaining < other.amountOfTimeRemaining:
 
             return True
 
@@ -44,11 +44,13 @@ def getInfo(cajasDelSuper, remainingCustomers, cantidadDeCajas, amountOfCustomer
 
         i = i + 1
 
+    customerLine = sys.stdin.readline().split()
+
     i = 0
 
     while i < amountOfCustomers:
 
-        limbo = int(sys.stdin.readline())
+        limbo = int(customerLine[i])
         remainingCustomers.append(limbo)
 
         i = i + 1
@@ -75,8 +77,9 @@ def solveCases():
         registersInTheSuper = []
         remainingCustomers = []
 
-        amountOfRegisters = int(sys.stdin.readline())
-        amountOfCustomers = int(sys.stdin.readline())
+        line = sys.stdin.readline().split()
+        amountOfRegisters = int(line[0])
+        amountOfCustomers = int(line[1])
 
         if amountOfCustomers == 0 and amountOfRegisters == 0:
             return answer
@@ -105,5 +108,6 @@ def main():
 
 
 main()
+
 
 
